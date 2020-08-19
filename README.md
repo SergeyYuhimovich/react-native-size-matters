@@ -33,6 +33,7 @@ const Component = props =>
         width: scale(30),
         height: verticalScale(50),
         padding: moderateScale(5)
+        marginVertical: moderateVerticalScale(5)
     }}/>;
 ```
 
@@ -50,9 +51,12 @@ If normal scale will increase your size by +2X, moderateScale will only increase
 ➡️ moderateScale(10) = 15  
 ➡️ moderateScale(10, 0.1) = 11  
 
+* `moderateVerticalScale(size: number)`  
+Same as moderateScale, except looking on the difference between base and actual device screen height.
+
 All scale functions can be imported using their shorthand alias as well:
 ```js
-import { s, vs, ms } from 'react-native-size-matters';
+import { s, vs, ms, mvs } from 'react-native-size-matters';
 ```
 
 
@@ -68,6 +72,7 @@ ScaleSheet will take the same stylesObject a regular StyleSheet will take, plus 
 * `<size>@vs` - will apply `verticalScale` function on `size`.
 * `<size>@ms` - will apply `moderateScale` function with resize factor of 0.5 on `size`.
 * `<size>@ms<factor>` - will apply `moderateScale` function with resize factor of `factor` on size.
+* `<size>@mvs<factor>` - will apply `moderateVerticalScale` function with resize factor of `factor` on size.
 
 ScaledSheet also supports rounding the result, simply add `r` at the end of the annotation. 
 
@@ -92,7 +97,7 @@ const styles = ScaledSheet.create({
 ## Changing the Default Guideline Sizes
 
 In the ever-changing mobile devices world, screen sizes change a lot.  
-This lib uses 350dp x 680dp as guideline sizes, but if you (or your designer) prefer using different sizes it's possible.
+This lib uses 375dp x 812dp as guideline sizes, but if you (or your designer) prefer using different sizes it's possible.
 
 To do so, first, you'd need to setup [react-native-dotenv](https://github.com/zetachang/react-native-dotenv).  
 After setting it up and creating `.env` file, add the following env params to it:
